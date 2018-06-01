@@ -8,9 +8,7 @@ Vue.use(VueResource)
  * @param {String} url 
  * @return { Promise }
  */
-export const get = (url) => {
-    return Vue.http.get(`${API}/${url}`)
-}
+export const get = (url) => Vue.http.get(`${API}/${url}`);
 
 /**
  * Used to Insert Record
@@ -19,18 +17,14 @@ export const get = (url) => {
  * @return { Promise } mixed
  */
 
-export const put = (url, data) => {
-    return Vue.http.put(`${API}/${url}`, data)
-}
+export const put = (url, data) => Vue.http.put(`${API}/${url}`, data);
 
 /**
  * Used to Delete Record
  * @param {String} url String
  * @return { Promise } mixed
  */
-export const del = (url) => {
-    return Vue.http.delete(`${API}/${url}`)
-}
+export const del = (url) => Vue.http.delete(`${API}/${url}`);
 
 /**
  * Used to Insert/Update record
@@ -38,6 +32,4 @@ export const del = (url) => {
  * @param { Object } data Object
  * @return { Promise } mixed
  */
-export const post = (url, data) => {
-    return Vue.http.post(`${API}/${url}`, data)
-}
+export const post = (url, data) => Vue.http.post(`${API}/${url}`, data);
