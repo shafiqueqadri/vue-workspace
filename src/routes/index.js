@@ -2,7 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 //Page
-import HelloWorld from '../components/HelloWorld'
+import Home from '../pages/Home.vue'
 import Login from '../pages/Auth/Login.vue'
 import Signup from '../pages/Auth/Signup.vue'
 
@@ -13,7 +13,7 @@ export default new VueRouter({
     routes: [
         {
             path: '/',
-            component: HelloWorld,
+            component: Home,
             name: 'home'
         },
         {

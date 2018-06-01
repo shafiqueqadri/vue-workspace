@@ -2,6 +2,8 @@
 import Vue from 'vue';
 import VueResource from 'vue-resource';
 import { API } from "../environment";
+import { TOKEN } from "../constant/keys";
+import * as _storage from './Storage'
 Vue.use(VueResource)
 
 /**
@@ -33,3 +35,18 @@ export const del = (url) => Vue.http.delete(`${API}/${url}`);
  * @return { Promise } mixed
  */
 export const post = (url, data) => Vue.http.post(`${API}/${url}`, data);
+
+export const setToken = () => {
+    let token = _storage.get(TOKEN);
+
+    Vue.http.interceptors.push(function (request) {
+
+        // modify method
+        // request.method = 'POST';
+
+        // modify headers
+        request.headers.set('X-CSRF-TOKEN', 'TOKEN');
+        request.headers.set('Authorization', `Bearer ${token}` );
+
+    });
+}
