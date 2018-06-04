@@ -1,0 +1,9 @@
+export const BTS = 'BTS';
+export const LOGGIN_IN = `${BTS}:user:loggin_in`;
+export const DO_LOGIN = `${BTS}:user:do_login`;
+export const STORE_USER = `${BTS}:user:store`;
+export const PROFILE = `${BTS}:user:profile`;
+export const LOGOUT = `${BTS}:user:logout`;
+export const LOGGED_OUT = `${BTS}:user:loggedout`;
+export const USER_ID = `${BTS}:user:id`;
+export const TOKEN = `${BTS}:auth:token`;

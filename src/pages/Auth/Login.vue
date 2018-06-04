@@ -1,7 +1,8 @@
 <template>
     <div id="login">
         <h1>{{ 'site_name' | translate }}</h1>
-        <button @click="doLogin">Login</button>
+        <button @click="login">Login</button>
+
     </div>
 </template>
 
@@ -12,6 +13,8 @@
     import { setToken } from "../../services/Http";
     import * as _user from '../../services/User'
 
+    import { mapState,  mapActions} from "vuex";
+    
     export default {
         name: 'login',
         data: function () {
@@ -24,26 +27,18 @@
         },
         mounted: function () {
             setToken();
-            this.loadProfile()
         },
         methods: {
-            doLogin: function () {
-                let self = this;
-                _auth._login({email: 'admin1s@gmail.com', password: 'admin1'}).then(function (response) {
-                    _storage.set(TOKEN, response.body.token)
-                    _storage.set(USER_ID, response.body.user.id)
-
-                    setToken();
-                })
-            },
-
-            loadProfile: function () {
-                _user._loadProfile().then(function (response){
-                    console.log('====================================');
-                    console.log(response);
-                    console.log('====================================');
-                })
+            ...mapActions([
+                'doLogin'
+            ]),
+            login: function () {
+                this.doLogin({email: 'admin1s@gmail.com', password: 'admin1'});
+                this.$route.push('/home')
             }
-        }
+        },
+        // computed: mapState([
+        //     'user'
+        // ])
     }
 </script>

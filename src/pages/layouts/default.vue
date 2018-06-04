@@ -1,9 +1,6 @@
 <template>
     <div>
-        <login v-if="!isLoggedIn"></login>
-        <home v-else>
-            <router-view></router-view>
-        </home>
+        <router-view></router-view>
     </div>
 
 </template>
@@ -22,15 +19,6 @@ export default {
     components: {
         Login,
         Home
-    },
-    
-    mounted: function(){
-        setToken();
-        _user._loadProfile().then(esponse => {
-            this.isLoggedIn = true;
-        }, function (err) {
-
-        })
     }
 }
 </script>
