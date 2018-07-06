@@ -1,3 +1,24 @@
 export default {
-    'site_name' : 'Back To School'
+  site_name: 'iShafique',
+  home: 'Home',
+  name: 'Name',
+  email: 'Email',
+  password: 'Password',
+  password_confirmation: 'Confirm password',
+  login: 'Login',
+  logout: 'Logout',
+  signup: 'Signup',
+  create_account: 'Create Account',
+  already_account: 'Already have an account?',
+  welcome_back: 'Welcome to GiteSoft',
+  logout_thank_you: 'Thank you for stopping by.',
+  release_date: 'Release Date',
+  price: 'Price',
+  country: 'Country',
+  genre: 'Genre',
+  description: 'Description',
+  send: 'Send',
+  comments: 'Comments',
+  photo: 'Cover photo',
+  'Unauthenticated.': 'Please login first'
 }

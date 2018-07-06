@@ -1,3 +1,3 @@
-import * as language from '../languages'
+import * as language from '@/languages'
 
-export const translate = key => language['fr'][key];
+export const translate = key => language['en'][key]

@@ -1,34 +1,43 @@
-import Vue from 'vue';
-import { _login } from "../../services/Auth";
-import * as type from "./types";
-import * as _storage from "../../services/Storage";
-import { setToken } from "../../services/Http";
+import {_login, _register} from '@/services/Auth'
+import * as type from './types'
+import { setToken } from '@/services/Http'
 
 const actions = {
-    doLogin: ({commit}, data) => {
-        _login(data).then(response => {
-            storeInformation(commit, response.body)
+  doLogin ({ commit }, data) {
+    return new Promise((resolve, reject) => {
+      _login(data).then(response => {
+        commit(type.STORE_USER, {
+          payload: response.body
         })
-    },
-    checkToken: ({commit}) => {
-        if (_storage.get(type.TOKEN)) {
-            setToken();
-            commit(type.STORE_USER, {
-                payload: JSON.parse(_storage.get(type.PROFILE))
-            })
-        }
-    }
-}
-
-let storeInformation = (commit, response) => {
-    _storage.set(type.TOKEN, response.token)
-    _storage.set(type.USER_ID, response.user.id)
-    _storage.set(type.PROFILE, JSON.stringify(response.user))
-    setToken();
-
-    commit(type.STORE_USER, {
-        payload: response.user
+        resolve(response)
+      }, err => reject(err))
     })
+  },
+  doSingup ({ commit }, data) {
+    return new Promise((resolve, reject) => {
+      _register(data).then(response => {
+        commit(type.STORE_USER, {
+          payload: response.body
+        })
+        resolve(response)
+      }, err => reject(err))
+    })
+  },
+  checkToken ({ commit }) {
+    setToken()
+  },
+  doLogout ({ commit }) {
+    logoutUser(commit)
+  },
+  updateProfile ({ commit }, user) {
+    commit(type.PROFILE_UPDATE, {
+      payload: user
+    })
+  }
 }
 
-export default actions;
+let logoutUser = (commit) => {
+  commit(type.LOGOUT)
+}
+
+export default actions

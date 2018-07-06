@@ -1,30 +1,37 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
+import Vue from 'vue'
+import VueRouter from 'vue-router'
 
-//Page
-import Home from '../pages/Home.vue'
-import Login from '../pages/Auth/Login.vue'
-import Signup from '../pages/Auth/Signup.vue'
+// Page
+import MasterLayout from '@/pages/layout'
+import Login from '@/pages/auth/login'
+import Signup from '@/pages/auth/signup'
+import Home from '@/pages/home'
 
-Vue.use(VueRouter);
-
+Vue.use(VueRouter)
 
 export default new VueRouter({
-    routes: [
+  routes: [
+    {
+      path: '/',
+      component: MasterLayout,
+      redirect: '/home',
+      children:[
         {
-            path: '/',
-            component: Home,
-            name: 'home'
+          path: '/home',
+          component: Home,
+          name: 'Home'
         },
         {
-            path: '/login',
-            component: Login,
-            name: 'login'
+          path: '/login',
+          component: Login,
+          name: 'Login'
         },
         {
-            path: '/signup',
-            component: Signup,
-            name: 'signup'
-        }
-    ]
+          path: '/signup',
+          component: Signup,
+          name: 'Signup'
+        },
+      ]
+    }
+  ]
 })
