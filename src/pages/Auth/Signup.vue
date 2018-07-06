@@ -1,7 +1,6 @@
 <template>
     <div>
         <div class="imgcontainer">
-            <img src="http://www.gitesoft.com/wp-content/uploads/2015/05/gs.png" alt="Avatar" class="avatar">
         </div>
     
         <div class="container text-left">
